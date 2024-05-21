@@ -35,7 +35,9 @@ const simpsons = [
     income: 35,
   },
 ];
+
 const numbers = [512, 77, 333, 49, 81, 4, -12, 3.14, 1000, 31, 99];
+
 const strings = [
   "HTML",
   "React",
@@ -55,6 +57,12 @@ const stringList = document.querySelector("[data-js='stringList']");
 const stringOutput = document.querySelector("[data-js='string-output']");
 const findOutput = document.querySelector("[data-js='find-output']");
 
+const numberToCheck = 77;
+const numberIsIncluded = numbers.includes(numberToCheck);
+numberOutput.textContent = numberIsIncluded
+  ? `Yes, ${numberToCheck} is included!`
+  : `No, ${numberToCheck} is not included!`;
+
 numbers.forEach((number) => {
   const card = document.createElement("li");
   card.classList.add("tag");
@@ -62,12 +70,23 @@ numbers.forEach((number) => {
   numberList.append(card);
 });
 
-strings.forEach((number) => {
+const stringToCheck = "MongoDb";
+const stringIsIncluded = strings.includes(stringToCheck);
+stringOutput.textContent = stringIsIncluded
+  ? `Yes, ${stringToCheck} is included!`
+  : `No, ${stringToCheck} is not included!`;
+
+strings.forEach((string) => {
   const card = document.createElement("li");
   card.classList.add("tag");
-  card.innerHTML = `<span>${number}</span>`;
+  card.innerHTML = `<span>${string}</span>`;
   stringList.append(card);
 });
+
+const foundObject = simpsons.find((simpson) => simpson.age === 12);
+findOutput.textContent = foundObject
+  ? `Yes, it's ${foundObject.name}`
+  : "Cannot find any!";
 
 simpsons.forEach((simpson) => {
   const card = document.createElement("li");
